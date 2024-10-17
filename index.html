@@ -6,6 +6,46 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vite + Vue</title>
 
+    <script>
+      // Define dataLayer and the gtag function.
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      // Set default consent to 'denied' as a placeholder
+      // Determine actual values based on your own requirements
+      gtag("consent", "default", {
+        ad_storage: "denied",
+        ad_user_data: "denied",
+        ad_personalization: "denied",
+        analytics_storage: "denied",
+      });
+    </script>
+    <!-- Google tag (gtag.js) -->
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=GT-M69F4HB5"
+    ></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+
+      gtag("js", new Date());
+      gtag("config", "GT-M69F4HB5");
+    </script>
+
+    <!-- Create one update function for each consent parameter -->
+    <script>
+      function consentGrantedAdStorage() {
+        gtag("consent", "update", {
+          ad_storage: "granted",
+        });
+      }
+    </script>
+
     <!-- Google Tag Manager -->
     <script>
       (function (w, d, s, l, i) {
@@ -32,8 +72,8 @@
       ></iframe
     ></noscript>
     <!-- End Google Tag Manager (noscript) -->
-
+    <button onclick="consentGrantedAdStorage()">Yes</button>
     <div id="app"></div>
-    <script type="module" src="/src/main.js"></script>
   </body>
+  <script type="module" src="/src/main.js"></script>
 </html>
