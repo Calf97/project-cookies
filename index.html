@@ -33,7 +33,20 @@
     ></noscript>
     <!-- End Google Tag Manager (noscript) -->
 
+    <!-- Botão para Aceitar Cookies de Personalização de Anúncios -->
+    <button onclick="consentGrantedAdsPersonalization()">Aceitar</button>
+
     <div id="app"></div>
+
     <script type="module" src="/src/main.js"></script>
+
+    <script>
+      function consentGrantedAdsPersonalization() {
+        gtag("consent", "update", {
+          ad_storage: "granted",
+          ad_user_data: "granted",
+        });
+      }
+    </script>
   </body>
 </html>
