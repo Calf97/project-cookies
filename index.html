@@ -34,7 +34,71 @@
     <!-- End Google Tag Manager (noscript) -->
 
     <div id="app"></div>
-
+    <div
+      id="cookie-banner"
+      style="
+        display: none;
+        position: fixed;
+        bottom: 0;
+        background: #000;
+        color: #fff;
+        width: 100%;
+        padding: 10px;
+        text-align: center;
+      "
+    >
+      Este site utiliza cookies para melhorar sua experiência. Ao continuar
+      navegando, você concorda com o uso de cookies.
+      <button
+        id="accept-cookies"
+        style="
+          background-color: green;
+          color: white;
+          border: none;
+          padding: 5px 10px;
+          cursor: pointer;
+        "
+      >
+        Aceitar
+      </button>
+      <button
+        id="deny-cookies"
+        style="
+          background-color: red;
+          color: white;
+          border: none;
+          padding: 5px 10px;
+          cursor: pointer;
+        "
+      >
+        Recusar
+      </button>
+    </div>
     <script type="module" src="/src/main.js"></script>
+    <script>
+      window.addEventListener("load", function () {
+        const consent = localStorage.getItem("cookieConsent");
+
+        if (!consent) {
+          document.getElementById("cookie-banner").style.display = "block";
+        }
+
+        document
+          .getElementById("accept-cookies")
+          .addEventListener("click", function () {
+            localStorage.setItem("cookieConsent", "accepted");
+            document.getElementById("cookie-banner").style.display = "none";
+            dataLayer.push({ event: "cookie_consent", consent: "granted" });
+          });
+
+        document
+          .getElementById("deny-cookies")
+          .addEventListener("click", function () {
+            localStorage.setItem("cookieConsent", "denied");
+            document.getElementById("cookie-banner").style.display = "none";
+            dataLayer.push({ event: "cookie_consent", consent: "denied" });
+          });
+      });
+    </script>
   </body>
 </html>
