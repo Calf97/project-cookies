@@ -23,14 +23,14 @@
   </head>
   <body>
     <!-- Google Tag Manager (noscript) -->
-    <noscript
-      ><iframe
+    <noscript>
+      <iframe
         src="https://www.googletagmanager.com/ns.html?id=GTM-P6MHKL9W"
         height="0"
         width="0"
         style="display: none; visibility: hidden"
-      ></iframe
-    ></noscript>
+      ></iframe>
+    </noscript>
     <!-- End Google Tag Manager (noscript) -->
 
     <div id="app"></div>
@@ -74,15 +74,19 @@
         Recusar
       </button>
     </div>
+
     <script type="module" src="/src/main.js"></script>
+
     <script>
       window.addEventListener("load", function () {
         const consent = localStorage.getItem("cookieConsent");
 
+        // Mostra o banner se não houver consentimento armazenado
         if (!consent) {
           document.getElementById("cookie-banner").style.display = "block";
         }
 
+        // Aceitar cookies
         document
           .getElementById("accept-cookies")
           .addEventListener("click", function () {
@@ -91,6 +95,7 @@
             dataLayer.push({ event: "cookie_consent", consent: "granted" });
           });
 
+        // Recusar cookies
         document
           .getElementById("deny-cookies")
           .addEventListener("click", function () {
