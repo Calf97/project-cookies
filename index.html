@@ -7,7 +7,6 @@
     <title>Vite + Vue</title>
 
     <script>
-      // Define dataLayer and the gtag function.
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
@@ -40,8 +39,17 @@
     <!-- Create one update function for each consent parameter -->
     <script>
       function consentGrantedAdStorage() {
+        console.log("Chamando o método: [consentGrantedAdStorage]");
         gtag("consent", "update", {
           ad_storage: "granted",
+        });
+      }
+
+      function consentDeniedAdStorage() {
+        console.log("Chamando o método: [consentDeniedAdStorage]");
+        gtag("consent", "default", {
+          ad_storage: "denied",
+          wait_for_update: 500,
         });
       }
     </script>
@@ -72,7 +80,8 @@
       ></iframe
     ></noscript>
     <!-- End Google Tag Manager (noscript) -->
-    <button onclick="consentGrantedAdStorage()">Yes</button>
+    <button onclick="consentGrantedAdStorage()">Aceitar</button>
+    <button onclick="consentDeniedAdStorage()">Negar</button>
     <div id="app"></div>
   </body>
   <script type="module" src="/src/main.js"></script>
